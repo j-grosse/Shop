@@ -9,6 +9,11 @@ const Card = ({ id, name, price, weight, image }) => {
   const navigate = useNavigate();
   console.log(cartContent);
 
+
+  const showCart = () => {
+    navigate(`/cart`);
+  };
+
   const showDetails = () => {
     navigate(`/${id}`);
   };
@@ -33,7 +38,7 @@ const Card = ({ id, name, price, weight, image }) => {
           }}
           className="text-xs border-2 rounded-lg border-grey bg-white px-2 w-20"
         >
-          add
+          +
         </button>
         <button
           onClick={() => {
@@ -41,13 +46,19 @@ const Card = ({ id, name, price, weight, image }) => {
           }}
           className="text-xs border-2 rounded-lg border-grey bg-white px-2 w-20"
         >
-          remove
+          -
         </button>
         <button
           onClick={showDetails}
           className="text-xs border-2 rounded-lg border-grey bg-white px-2 w-20"
         >
           details
+        </button>
+        <button
+          onClick={showCart}
+          className="text-xs border-2 rounded-lg border-grey bg-white px-2 w-20"
+        >
+          Cart
         </button>
       </div>
     </div>
