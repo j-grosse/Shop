@@ -11,17 +11,18 @@ const ProductDetails = () => {
     return data.find((item) => item.id === idParam);
   };
 
-  const p = getObjectById(idParam);
-  console.log(p);
+  const product = getObjectById(idParam);
+  console.log(product);
   
-  if (!p) {
+  if (!product) {
     return <div>Product not found</div>;
   }
   
   return (
     <div>
       <div>ProductDetails</div>
-      <Card id={idParam} name={p.name} price={p.price} weight={p.weight} />
+      
+      <Card id={idParam} name={product.name} price={product.price} weight={product.weight} image={product.image}/>
     </div>
   );
 };

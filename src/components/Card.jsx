@@ -1,38 +1,52 @@
 import React from 'react';
 import { useContext } from 'react';
 import { CartContext } from '../App';
-import ProductList from './ProductList';
 import { useNavigate } from 'react-router-dom';
 
 const Card = ({ id, name, price, weight, image }) => {
   const { cartContent, setCartContent, addToCart } = useContext(CartContext);
+
   const navigate = useNavigate();
   console.log(cartContent);
 
-  const handleDetails = () => {
+  const showDetails = () => {
     navigate(`/${id}`);
   };
 
   return (
-    <div className="rounded-3xl bg-red-200 my-3 p-3">
+    <div className="flex flex-col justify-center text-center rounded-3xl bg-white my-3 p-3 w-3/12 shadow-xl">
       <ul key={id}>
-        <li>{name}</li>
+        <li>
+          <b>{name}</b>
+        </li>
         <li>€ {price}</li>
         <li>{weight} kg</li>
-        <li><img src={image} alt="fruit"/></li>
+        <li>
+          <img className="mx-auto w-6/12 m-4" src={image} alt="fruit" />
+        </li>
       </ul>
-      <button
-        onClick={addToCart({name})}
-        className="border-2 rounded-lg bg-blue-200 px-2 "
-      >
-        add to cart
-      </button>
-      <button
-        onClick={handleDetails}
-        className="border-2 rounded-lg bg-blue-200 px-2 "
-      >
-        details
-      </button>
+      <div className="flex">
+        <button
+          onClick={() => {
+            addToCart({ name }, +1);
+          }}
+          className="text-xs border-2 rounded-lg bg-blue-200 px-2 w-3/12"
+        >
+          add
+        </button>
+        <button
+          onClick={() => addToCart({ name }, -1)}
+          className="text-xs border-2 rounded-lg bg-blue-200 px-2 w-3/12"
+        >
+          remove
+        </button>
+        <button
+          onClick={showDetails}
+          className="text-xs border-2 rounded-lg bg-blue-200 px-2 w-3/12"
+        >
+          details
+        </button>
+      </div>
     </div>
   );
 };
