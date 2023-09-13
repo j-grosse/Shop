@@ -2,7 +2,7 @@ import React from 'react';
 import ProductList from './ProductList';
 
 const Home = () => {
-  
+
   return (
     <div>
       <div className="border-2 rounded-3xl bg-gray-100">
@@ -13,7 +13,7 @@ const Home = () => {
             search
           </button>
         </form>
-        <ProductList/>
+        <ProductList />
       </div>
     </div>
   );

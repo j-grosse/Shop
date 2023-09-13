@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useState } from 'react';
 import Card from './Card';
 
 const Shop = () => {
   return (
     <div>
-      <Card/>
+      <Card />
     </div>
   );
 };
