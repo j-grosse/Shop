@@ -5,9 +5,9 @@ import { useNavigate } from 'react-router-dom';
 
 const Card = ({ id, name, price, weight, image }) => {
   const { cartContent, setCartContent, addToCart } = useContext(CartContext);
+  // console.log(cartContent);
 
   const navigate = useNavigate();
-  console.log(cartContent);
 
   const showDetails = () => {
     navigate(`/${id}`);
