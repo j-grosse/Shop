@@ -28,10 +28,10 @@ const ProductList = () => {
 
   return (
     <div className="mx-auto w-80 h-100 min-h-screen">
-      <div className="flex flex-col text-center border-2 rounded-3xl bg-white p-5 m-10 shadow-xl">
+      <div className="flex flex-col text-center border-2 rounded-3xl bg-yellow-50 p-5 m-10 shadow-xl">
         <Header />
-        <div className="text-xl">Fresh Fruits</div>
-        <form className="m-5 shadow-lg" onSubmit={handleSubmit}>
+        <div className="text-3xl font-bold mb-4">Fresh Fruits</div>
+        <form className="m-5 rounded-lg shadow-lg" onSubmit={handleSubmit}>
           <input
             className="border-2 rounded-lg bg-gray-50"
             type="text"
@@ -51,14 +51,14 @@ const ProductList = () => {
               product.name.toLowerCase().includes(searchTerm.toLowerCase())
             )
             .map((product) => (
-              <Card
-                key={product.id}
-                id={product.id}
-                name={product.name}
-                price={product.price}
-                weight={product.weight}
-                image={product.image}
-              />
+                <Card
+                  key={product.id}
+                  id={product.id}
+                  name={product.name}
+                  price={product.price}
+                  weight={product.weight}
+                  image={product.image}
+                />
             ))}
         </div>
       </div>

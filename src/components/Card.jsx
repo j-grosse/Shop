@@ -1,44 +1,35 @@
 import React from 'react';
 import { useContext } from 'react';
 import { CartContext } from '../App';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Card = ({ id, name, price, weight, image }) => {
   const { cartContent, setCartContent, addToCart } = useContext(CartContext);
   // console.log(cartContent);
 
-  const navigate = useNavigate();
-
-  const showDetails = () => {
-    navigate(`/${id}`);
-  };
-
   return (
-    <div className="flex flex-col justify-center text-center rounded-3xl bg-rose-100 my-3 p-3 w-44 shadow-xl">
-      <ul key={id}>
-        <li>
-          <b>{name}</b>
-        </li>
-        <li>€ {price}</li>
-        <li>{weight} kg</li>
-        <li>
-          <img className="mx-auto w-6/12 m-4" src={image} alt="fruit" />
-        </li>
-      </ul>
+    <div className="flex flex-col justify-center text-center rounded-3xl bg-green-200 my-3 p-3 w-44 shadow-xl">
+      <Link to={`/${id}`}>
+        <ul key={id}>
+          <li>
+            <b>{name}</b>
+          </li>
+          <li>€ {price}</li>
+          <li>{weight} kg</li>
+          <li>
+            <img className="mx-auto w-6/12 m-4" src={image} alt="fruit" />
+          </li>
+        </ul>
+      </Link>
+
       <div className="flex mb-2">
-        <button
-          onClick={showDetails}
-          className="text-xs mx-auto border-2 rounded-lg border-grey bg-white px-2 w-20"
-        >
-          details
-        </button>
       </div>
-      <div className="flex mb-2">
+      <div className="flex justify-around mb-2">
         <button
           onClick={() => {
             addToCart(-1);
           }}
-          className="text-xs border-2 rounded-lg border-grey bg-white px-2 w-20"
+          className="text-xl border-2 rounded-lg border-grey bg-white px-2"
         >
           -
         </button>
@@ -47,7 +38,7 @@ const Card = ({ id, name, price, weight, image }) => {
             addToCart(+1);
             // addToCart(name, +1);
           }}
-          className="text-xs border-2 rounded-lg border-grey bg-white px-2 w-20"
+          className="text-xl border-2 rounded-lg border-grey bg-white px-2"
         >
           +
         </button>

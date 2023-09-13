@@ -9,7 +9,7 @@ const Cart = () => {
   return (
     <div className="mx-auto w-80 h-100 min-h-screen">
       <div className="flex flex-col justify-center mx-auto w-80 min-h-screen shadow-3xl">
-        <div className="flex flex-col text-center border-2 rounded-3xl bg-white p-5 m-10 shadow-xl">
+        <div className="flex flex-col text-center border-2 rounded-3xl bg-yellow-50 p-5 m-10 shadow-xl">
           <Header />
           <div className="text-xl mb-20">Cart</div>
           {Object.entries(cartContent).map(([key, value]) => (

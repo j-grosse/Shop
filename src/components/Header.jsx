@@ -22,16 +22,16 @@ const Header = () => {
     <div className="flex justify-between mb-10">
       <button
         onClick={goBack}
-        className="bg-gray-100 p-1 pt-2 px-4 rounded-lg shadow-lg"
+        className="p-1 pt-2 px-4 rounded-lg shadow-lg"
       >
         {location.pathname !== '/' ? <MdArrowBackIos /> : <BiHomeAlt2 />}
       </button>
       <button
         onClick={showCart}
-        className="bg-gray-100 pt-2 px-4 rounded-lg shadow-lg"
+        className="pt-2 px-4 rounded-lg shadow-lg"
       >
         <PiShoppingCartLight />
-        {cartContent.sum}
+        {cartContent.amount}
       </button>
     </div>
   );
