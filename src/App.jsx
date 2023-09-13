@@ -12,13 +12,13 @@ const App = () => {
     mango: 0,
     melon: 0,
     peach: 0,
-    Cart: 0,
+    sum: 0,
   });
 
   const addToCart = (amount) => {
     setCartContent((prevCartContent) => ({
       ...prevCartContent,
-      Cart: Math.max(prevCartContent.sum + amount, 0),
+      sum: Math.max(prevCartContent.sum + amount, 0),
     }));
   };
 

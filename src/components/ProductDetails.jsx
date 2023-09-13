@@ -3,6 +3,7 @@ import { CartContext } from '../App';
 import Card from './Card';
 import { useParams, useNavigate } from 'react-router-dom';
 import data from '../mockData/data';
+import { PiShoppingCartLight } from 'react-icons/pi';
 
 const ProductDetails = () => {
   const { idParam } = useParams();
@@ -35,8 +36,9 @@ const ProductDetails = () => {
           <button onClick={goBack} className="border-2 p-1 rounded-lg">
             back
           </button>
-          <button onClick={showCart} className="border-2 p-1 rounded-lg">
-            Cart: {cartContent.sum}
+          <button onClick={showCart} className="border-2 pt-2 px-4 rounded-lg">
+            <PiShoppingCartLight />
+            {cartContent.sum}
           </button>
         </div>
         <div className="text-xl">Product Details</div>

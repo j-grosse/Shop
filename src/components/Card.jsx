@@ -9,11 +9,6 @@ const Card = ({ id, name, price, weight, image }) => {
   const navigate = useNavigate();
   console.log(cartContent);
 
-
-  const showCart = () => {
-    navigate(`/cart`);
-  };
-
   const showDetails = () => {
     navigate(`/${id}`);
   };
@@ -30,16 +25,15 @@ const Card = ({ id, name, price, weight, image }) => {
           <img className="mx-auto w-6/12 m-4" src={image} alt="fruit" />
         </li>
       </ul>
-      <div className="flex">
+      <div className="flex mb-2">
         <button
-          onClick={() => {
-            addToCart(+1);
-            // addToCart(name, +1);
-          }}
-          className="text-xs border-2 rounded-lg border-grey bg-white px-2 w-20"
+          onClick={showDetails}
+          className="text-xs mx-auto border-2 rounded-lg border-grey bg-white px-2 w-20"
         >
-          +
+          details
         </button>
+      </div>
+      <div className="flex mb-2">
         <button
           onClick={() => {
             addToCart(-1);
@@ -49,16 +43,13 @@ const Card = ({ id, name, price, weight, image }) => {
           -
         </button>
         <button
-          onClick={showDetails}
+          onClick={() => {
+            addToCart(+1);
+            // addToCart(name, +1);
+          }}
           className="text-xs border-2 rounded-lg border-grey bg-white px-2 w-20"
         >
-          details
-        </button>
-        <button
-          onClick={showCart}
-          className="text-xs border-2 rounded-lg border-grey bg-white px-2 w-20"
-        >
-          Cart
+          +
         </button>
       </div>
     </div>

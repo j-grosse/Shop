@@ -4,6 +4,7 @@ import { CartContext } from '../App';
 import { useNavigate } from 'react-router-dom';
 import data from '../mockData/data';
 import Card from './Card';
+import { PiShoppingCartLight } from 'react-icons/pi';
 
 const ProductList = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -44,8 +45,9 @@ const ProductList = () => {
           <button onClick={goBack} className="border-2 p-1 rounded-lg">
             back
           </button>
-          <button onClick={showCart} className="border-2 p-1 rounded-lg">
-            Cart: {cartContent.sum}
+          <button onClick={showCart} className="border-2 pt-2 px-4 rounded-lg">
+            <PiShoppingCartLight />
+            {cartContent.sum}
           </button>
         </div>
         <div className="text-xl">Fruits and Berries</div>
