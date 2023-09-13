@@ -13,6 +13,7 @@ const App = () => {
     melon: 0,
     peach: 0,
     amount: 0,
+    total: 0.00
   });
 
   const addToCart = (amount) => {

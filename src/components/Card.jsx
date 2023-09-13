@@ -22,14 +22,13 @@ const Card = ({ id, name, price, weight, image }) => {
         </ul>
       </Link>
 
-      <div className="flex mb-2">
-      </div>
+      <div className="flex mb-2"></div>
       <div className="flex justify-around mb-2">
         <button
           onClick={() => {
             addToCart(-1);
           }}
-          className="text-xl border-2 rounded-lg border-grey bg-white px-2"
+          className="text-xl border-2 rounded-lg border-grey bg-white px-2 shadow-lg"
         >
           -
         </button>
@@ -38,7 +37,7 @@ const Card = ({ id, name, price, weight, image }) => {
             addToCart(+1);
             // addToCart(name, +1);
           }}
-          className="text-xl border-2 rounded-lg border-grey bg-white px-2"
+          className="text-xl border-2 rounded-lg border-grey bg-white px-2 shadow-lg"
         >
           +
         </button>
