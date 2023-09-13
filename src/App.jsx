@@ -12,14 +12,14 @@ const App = () => {
     mango: 0,
     melon: 0,
     peach: 0,
-    sum: 0,
+    Cart: 0,
   });
 
   const addToCart = (amount) => {
-      setCartContent((prevCartContent) => ({
-        ...prevCartContent,
-        sum: Math.max(prevCartContent.sum + amount, 0),
-      }));
+    setCartContent((prevCartContent) => ({
+      ...prevCartContent,
+      Cart: Math.max(prevCartContent.sum + amount, 0),
+    }));
   };
 
   // const addToCart = (name, amount) => {
@@ -44,11 +44,11 @@ const App = () => {
   return (
     <BrowserRouter>
       <CartContext.Provider value={{ cartContent, setCartContent, addToCart }}>
-          <Routes>
-            <Route path="/" element={<ProductList />} />
-            <Route path="/:idParam" element={<ProductDetails />} />
-            <Route path="/cart" element={<Cart />} />
-          </Routes>
+        <Routes>
+          <Route path="/" element={<ProductList />} />
+          <Route path="/:idParam" element={<ProductDetails />} />
+          <Route path="/cart" element={<Cart />} />
+        </Routes>
       </CartContext.Provider>
     </BrowserRouter>
   );
