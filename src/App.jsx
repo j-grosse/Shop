@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
 import { BrowserRouter, Routes, Route, useParams } from 'react-router-dom';
-import Home from './components/Home';
 import ProductList from './components/ProductList';
 import ProductDetails from './components/ProductDetails';
 import Cart from './components/Cart';
@@ -16,32 +15,40 @@ const App = () => {
     sum: 0,
   });
 
-  const addToCart = (name, amount) => {
-    const prevAmount = cartContent[name];
-    console.log('fruit added')
-
-    prevAmount &&
-      setCartContent((prevContent) => {
-        if (prevAmount !== 0) {
-          return {
-            ...prevContent,
-            [name]: prevAmount + amount,
-          };
-        } else {
-          return prevContent;
-        }
-      });
+  const addToCart = (amount) => {
+      setCartContent((prevCartContent) => ({
+        ...prevCartContent,
+        sum: Math.max(prevCartContent.sum + amount, 0),
+      }));
   };
+
+  // const addToCart = (name, amount) => {
+  //   const prevAmount = cartContent[name];
+  //   console.log('fruit added');
+  //   console.log(cartContent.sum);
+  //   prevAmount &&
+  //     setCartContent((prevContent) => {
+  //       console.log(prevContent);
+
+  //       if (prevAmount !== 0) {
+  //         return {
+  //           ...prevContent,
+  //           [name]: prevAmount + amount,
+  //         };
+  //       } else {
+  //         return prevContent;
+  //       }
+  //     });
+  // };
 
   return (
     <BrowserRouter>
       <CartContext.Provider value={{ cartContent, setCartContent, addToCart }}>
-      <Home />
-        <Routes>
-          <Route path="/" element={<ProductList />} />
-          <Route path="/:idParam" element={<ProductDetails />} />
-          <Route path="/cart" element={<Cart />} />
-        </Routes>
+          <Routes>
+            <Route path="/" element={<ProductList />} />
+            <Route path="/:idParam" element={<ProductDetails />} />
+            <Route path="/cart" element={<Cart />} />
+          </Routes>
       </CartContext.Provider>
     </BrowserRouter>
   );

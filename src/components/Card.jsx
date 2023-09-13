@@ -14,7 +14,7 @@ const Card = ({ id, name, price, weight, image }) => {
   };
 
   return (
-    <div className="flex flex-col justify-center text-center rounded-3xl bg-white my-3 p-3 w-44 shadow-xl">
+    <div className="flex flex-col justify-center text-center rounded-3xl bg-rose-100 my-3 p-3 w-44 shadow-xl">
       <ul key={id}>
         <li>
           <b>{name}</b>
@@ -28,21 +28,24 @@ const Card = ({ id, name, price, weight, image }) => {
       <div className="flex">
         <button
           onClick={() => {
-            addToCart({ name }, +1);
+            addToCart(+1);
+            // addToCart(name, +1);
           }}
-          className="text-xs border-2 rounded-lg border-grey px-2 w-20"
+          className="text-xs border-2 rounded-lg border-grey bg-white px-2 w-20"
         >
           add
         </button>
         <button
-          onClick={() => addToCart({ name }, -1)}
-          className="text-xs border-2 rounded-lg border-grey px-2 w-20"
+          onClick={() => {
+            addToCart(-1);
+          }}
+          className="text-xs border-2 rounded-lg border-grey bg-white px-2 w-20"
         >
           remove
         </button>
         <button
           onClick={showDetails}
-          className="text-xs border-2 rounded-lg border-grey px-2 w-20"
+          className="text-xs border-2 rounded-lg border-grey bg-white px-2 w-20"
         >
           details
         </button>

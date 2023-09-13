@@ -1,18 +1,20 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { CartContext } from '../App';
 import data from '../mockData/data';
 import Card from './Card';
 
 const ProductList = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  
-    const searchByName = (name) => {
-      const searchResult = data.filter((product) =>
-        product.name.toLowerCase().includes(name.toLowerCase())
-      );
-      console.log(searchResult);
-    };
-  
+  const { cartContent } = useContext(CartContext);
+
+  const searchByName = (name) => {
+    const searchResult = data.filter((product) =>
+      product.name.toLowerCase().includes(name.toLowerCase())
+    );
+    console.log(searchResult);
+  };
+
   const handleInputChange = (event) => {
     setSearchTerm(event.target.value);
     console.log(searchTerm);
@@ -26,9 +28,13 @@ const ProductList = () => {
   };
 
   return (
-    <div>
-      <div className="flex flex-col text-center border-2 rounded-3xl bg-gray-50 p-5">
-        <div className='text-3xl'>Product List</div>
+    <div className="mx-auto w-80 min-h-screen">
+      <div className="flex flex-col text-center border-2 rounded-3xl bg-white p-5 m-10 shadow-xl">
+        <div className="flex justify-between mb-10">
+          <button className="text-right">back</button>
+          <p className="text-left">sum: {cartContent.sum}</p>
+        </div>
+        <div className="text-xl">Fruits and Berries</div>
         <form className="m-5" onSubmit={handleSubmit}>
           <input
             className="border-2 rounded-lg bg-gray-50"
@@ -43,18 +49,21 @@ const ProductList = () => {
             find
           </button> */}
         </form>
-        <div className="flex justify-center gap-4">
-          {data.filter((product) =>
-        product.name.toLowerCase().includes(searchTerm.toLowerCase())).map((product) => (
-            <Card
-              key={product.id}
-              id={product.id}
-              name={product.name}
-              price={product.price}
-              weight={product.weight}
-              image={product.image}
-            />
-          ))}
+        <div className="flex flex-col mx-auto justify-center gap-4">
+          {data
+            .filter((product) =>
+              product.name.toLowerCase().includes(searchTerm.toLowerCase())
+            )
+            .map((product) => (
+              <Card
+                key={product.id}
+                id={product.id}
+                name={product.name}
+                price={product.price}
+                weight={product.weight}
+                image={product.image}
+              />
+            ))}
         </div>
       </div>
     </div>
