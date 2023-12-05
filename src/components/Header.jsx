@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
-import { CartContext } from '../App';
+import { Context } from '../App';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { PiShoppingCartLight } from 'react-icons/pi';
 import { MdArrowBackIos } from 'react-icons/md';
 import { BiHomeAlt2 } from 'react-icons/bi';
 
 const Header = () => {
-  const { cartContent } = useContext(CartContext);
+  const { totalPieces } = useContext(Context);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -20,18 +20,17 @@ const Header = () => {
 
   return (
     <div className="flex justify-between mb-10">
-      <button
-        onClick={goBack}
-        className="p-1 pt-2 px-4 rounded-lg shadow-lg"
-      >
-        {location.pathname !== '/' ? <MdArrowBackIos /> : <BiHomeAlt2 />}
-      </button>
-      <button
-        onClick={showCart}
-        className="pt-2 px-4 rounded-lg shadow-lg"
-      >
+      {/* buttons to go to home and to cart */}
+      {location.pathname === '/' && <div></div>}
+      {location.pathname !== '/' && (
+        <button onClick={goBack} className="p-1 pt-2 px-4 rounded-lg shadow-lg">
+          <BiHomeAlt2 />
+        </button>
+      )}
+
+      <button onClick={showCart} className="pt-2 px-4 rounded-lg shadow-lg">
         <PiShoppingCartLight />
-        {cartContent.amount}
+        {totalPieces}
       </button>
     </div>
   );
